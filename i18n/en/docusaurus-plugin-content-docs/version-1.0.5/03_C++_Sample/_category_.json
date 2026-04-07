@@ -1,0 +1,9 @@
+{
+  "label": "2. Reference Example (C++)",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "03_C++_Sample",
+    "description": "Provides C++ algorithm development examples"
+  }
+}
