@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Python 接口手册
 ---
-## 简介（Overview）-1.0.5 测试 workflow-第二次-GITHUB TOKEN-删除 PAT 测试
+## 简介（Overview）-1.0.5 测试 workflow-第二次-GITHUB TOKEN-删除 PAT 测试-更新 主仓库 workflow
 hbm_runtime是基于pybind11的Python绑定接口，用于访问和操作libhbucp/libdnn C++ 库，提供高性能的神经网络模型加载和推理功能。
 
 该接口封装了底层模型运行时细节，使 Python 用户能够方便地加载单个或多个神经网络模型，管理模型的输入输出信息，并灵活执行推理操作。接口支持多种输入数据格式，且通过智能转换保证输入数据连续存储，提升运行效率。
