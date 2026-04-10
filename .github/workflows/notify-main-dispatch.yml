@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main] 
+
+jobs:
+  trigger-parent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ✅ 生成 GitHub App token
+      - name: Generate App Token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      # ✅ 触发主仓库
+      - name: Dispatch to parent repo
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ steps.app-token.outputs.token }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/liqinglian01/rdk_s100_os_doc/dispatches \
+            -d '{
+              "event_type": "submodule-updated",
+              "client_payload": {
+                "repo": "${{ github.repository }}",
+                "sha": "${{ github.sha }}"
+              }
+            }'
